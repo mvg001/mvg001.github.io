@@ -8,3 +8,8 @@
 .numero {
     text-align: right;
 }
+
+.boton {
+    margin: 10px;
+    text-align: center;
+}
