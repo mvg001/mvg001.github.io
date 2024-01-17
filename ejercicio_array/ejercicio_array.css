@@ -1,0 +1,15 @@
+#operations {
+    background-color: rgb(65, 216, 236);
+    border-radius: 5px;
+    padding: 1em;
+    width: fit-content;
+    margin: auto;
+}
+
+#products {
+    background-color: rgb(98, 237, 28);
+    border-radius: 5px;
+    padding: 1em;
+    width: fit-content;
+    margin: auto;
+} 
