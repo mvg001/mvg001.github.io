@@ -21,6 +21,7 @@ function createHojas(nHojas, division) {
         let hoja = document.createElement('img');
         hoja.src = 'hoja.png';
         hoja.style.width = `${createValue(MIN_WIDTH, MAX_WIDTH)}px`;
+        hoja.style.transform = `rotate(${createValue(0,360)}deg)`;
 
         let divHoja = document.createElement('div');
         divHoja.style.position='absolute';
@@ -56,7 +57,7 @@ function animate(duration,draw) {
         let timePassed = Date.now() - start;
 
         if (timePassed >= duration) {
-            clearInterval(timer); // finish the animation after 2 seconds
+            clearInterval(timer); // finish the animation after duration milliseconds
             return;
         }
 
