@@ -8,8 +8,10 @@ const MAX_DELTA = 4;
 const MIN_DELTA = 1;
 const MAX_WIDTH = 60;
 const MIN_WIDTH = 30;
-const FRAME_REFRESH = 20; // milliseconds
+const REFRESH_INTERVAL = 20; // milliseconds
 const NUMBER_LEAVES = 10;
+const TOTAL_SIMULATION_TIME = 60000; // 60 seconds
+const SQRT2 = Math.sqrt(2.0);
 
 function createValue(minValue, maxValue) {
     return (maxValue - minValue) * Math.random() + minValue;
@@ -23,7 +25,7 @@ function createHojas(nHojas, division) {
         let size = createValue(MIN_WIDTH,MAX_WIDTH);
         hoja.style.width = `${size}px`;
         hoja.style.transform = `rotate(${createValue(0,360)}deg)`;
-        
+        size *= SQRT2;
         let divHoja = document.createElement('div');
         divHoja.style.position='absolute';
         divHoja.appendChild(hoja);
@@ -66,8 +68,8 @@ function animate(duration,draw) {
         // draw the animation at the moment timePassed
         draw(timePassed);
 
-    }, FRAME_REFRESH);
+    }, REFRESH_INTERVAL);
 }
 
 let hojas = createHojas(NUMBER_LEAVES,divHojas);
-animate(60000,(x)=>moveHojas(hojas));
+animate(TOTAL_SIMULATION_TIME,(x)=>moveHojas(hojas));
