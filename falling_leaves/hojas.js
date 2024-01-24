@@ -20,16 +20,18 @@ function createHojas(nHojas, division) {
     for (let i = 0; i < nHojas; i++) {
         let hoja = document.createElement('img');
         hoja.src = 'hoja.png';
-        hoja.style.width = `${createValue(MIN_WIDTH, MAX_WIDTH)}px`;
+        let size = createValue(MIN_WIDTH,MAX_WIDTH);
+        hoja.style.width = `${size}px`;
         hoja.style.transform = `rotate(${createValue(0,360)}deg)`;
-
+        
         let divHoja = document.createElement('div');
         divHoja.style.position='absolute';
         divHoja.appendChild(hoja);
         let h = {
             div: divHoja,
-            x: window.innerWidth * Math.random(),
-            y: window.innerHeight * Math.random(),
+            size: size,
+            x: (window.innerWidth - size) * Math.random(),
+            y: (window.innerHeight - size) * Math.random(),
             deltaY: createValue(MIN_DELTA,MAX_DELTA),
         }
         divHoja.style.left = `${h.x}px`;
@@ -43,7 +45,7 @@ function createHojas(nHojas, division) {
 
 function moveHojas(hojas) {
     hojas.forEach(hoja => {
-        hoja.y = (hoja.y + hoja.deltaY) % window.innerHeight;
+        hoja.y = (hoja.y + hoja.deltaY) % (window.innerHeight - hoja.size);
         hoja.div.style.top = `${hoja.y}px`;
         // console.log(hoja);
     });
